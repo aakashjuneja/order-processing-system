@@ -1,0 +1,87 @@
+#############################
+# Java
+#############################
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+#############################
+# Gradle
+#############################
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+gradle-app.setting
+
+# Ignore Gradle GUI config
+gradle-gui/
+
+# Local Gradle cache
+.gradle/
+
+#############################
+# IntelliJ IDEA
+#############################
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+#############################
+# VS Code
+#############################
+.vscode/
+
+#############################
+# OS Files
+#############################
+.DS_Store
+Thumbs.db
+
+#############################
+# Logs
+#############################
+logs/
+*.log
+log/
+
+#############################
+# Spring Boot
+#############################
+*.pid
+*.seed
+*.out
+
+#############################
+# H2 Database
+#############################
+*.db
+*.mv.db
+*.trace.db
+
+#############################
+# Test / Coverage
+#############################
+test-output/
+jacoco.exec
+coverage/
+*.lcov
+
+#############################
+# Temporary Files
+#############################
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+#############################
+# Application Specific
+#############################
+/.env
+.env.*
