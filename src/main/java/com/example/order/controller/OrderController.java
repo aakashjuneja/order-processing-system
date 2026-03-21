@@ -25,6 +25,9 @@ public class OrderController //unneccary comment should be removed{
 
     @PostMapping
     public ResponseEntity<OrderResponse> create(@RequestBody CreateOrderRequest request) {
+        if(request==null){
+            return ResponseEntity.badRequest;
+        }
         var o = service.createOrder(request);
         return ResponseEntity.ok(toResponse(o));
     }
