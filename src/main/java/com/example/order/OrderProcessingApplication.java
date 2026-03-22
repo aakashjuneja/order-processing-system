@@ -9,6 +9,9 @@ public class OrderProcessingApplication {
         SpringApplication.run(OrderProcessingApplication.class, args);
         //this comment
     }
+public void okmethod() {
+System.out.println("password");
+}
 }
 kmoommoijo
 //test
