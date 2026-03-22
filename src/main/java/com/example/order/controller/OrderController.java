@@ -74,4 +74,11 @@ public class OrderController {
                 .collect(Collectors.toList());
         return new OrderResponse(e.getId(), e.getCustomerName(), e.getCreatedAt(), e.getStatus(), items, e.totalAmount());
     }
+
+    private OrderResponse toResponse(OrderFilterEntity e) {
+        var items = e.getItems().stream()
+                .map(i -> new OrderResponse.OrderItem(i.getId(), i.getProductName(), i.getQuantity(), i.getPrice()))
+                .collect(Collectors.toList());
+        return new OrderResponse(e.getId(), e.getCustomerName(), e.getCreatedAt(), e.getStatus(), items, e.totalAmount());
+    }
 }
