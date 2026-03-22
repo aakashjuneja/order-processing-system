@@ -60,7 +60,15 @@ public class OrderServiceImpl implements OrderService {
             repository.save(o);
         });
     }
-
+@Override
+    public void promotePendingToProcessing2() {
+        var pending = repository.findByStatus(OrderStatus.PENDING);
+        pending.stream().forEach(o -> {
+            o.setStatus(OrderStatus.PROCESSING);
+            repository.save(o);
+        });
+        //commentttttttt
+    }
     @Override
     public OrderEntity updateStatus(Long id, OrderStatus status) {
         var o = repository.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
