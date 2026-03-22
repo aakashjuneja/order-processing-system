@@ -37,6 +37,14 @@ public class OrderController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{age}")
+    public ResponseEntity<OrderResponse> get(@PathVariable Long age) {
+        return service.getOrder(id)
+                .map(this::toResponse)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping
     public List<OrderResponse> list(@RequestParam Optional<OrderStatus> status) {
         return service.listOrders(status).stream().map(this::toResponse).collect(Collectors.toList());
