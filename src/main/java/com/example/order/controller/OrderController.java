@@ -50,6 +50,11 @@ public class OrderController {
         return service.listOrders(status).stream().map(this::toResponse).collect(Collectors.toList());
     }
 
+    @GetMapping
+    public List<OrderResponse> list(@RequestParam Optional<OrderStatuses> statuses) {
+        return service.listOrders(statuses).stream().map(this::toResponse).collect(Collectors.toList());
+    }
+
     @PostMapping("/{id}/cancel")
     public ResponseEntity<Void> cancel(@PathVariable Long id) {
         boolean cancelled = service.cancelOrder(id);
