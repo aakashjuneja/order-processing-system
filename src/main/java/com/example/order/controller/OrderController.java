@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderController {
+public class OrderController //unneccary comment should be removed{
 
     private final OrderService service;
 
@@ -25,6 +25,9 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<OrderResponse> create(@RequestBody CreateOrderRequest request) {
+        if(request==null){
+            return ResponseEntity.badRequest;
+        }
         var o = service.createOrder(request);
         return ResponseEntity.ok(toResponse(o));
     }
@@ -32,6 +35,30 @@ public class OrderController {
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponse> get(@PathVariable Long id) {
         return service.getOrder(id)
+                .map(this::toResponse)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<OrderResponse> get(@PathVariable String name) {
+        return service.getOrder(name)
+                .map(this::toResponse)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{price}")
+    public ResponseEntity<OrderResponse> get(@PathVariable String price) {
+        return service.getOrder(price)
+                .map(this::toResponse)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{location}")
+    public ResponseEntity<OrderResponse> get(@PathVariable String location) {
+        return service.getOrder(location)
                 .map(this::toResponse)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
